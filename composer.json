@@ -1,0 +1,29 @@
+{
+    "name": "davidaprilio/laraboots5",
+    "description": "Bootstrap5 component for Laravel",
+    "keywords": ["laravel", "component", "bootstrap5"],
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/Davidaprilio/Laraboots5/issues",
+        "source": "https://github.com/Davidaprilio/Laraboots5"
+    },
+    "authors": [
+        {
+            "name": "Dav0x0",
+            "email": "david1.aprilio4@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Davidaprilio\\Laraboots5\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Davidaprilio\\Laraboots5\\Laraboots5ServiceProvider"
+            ]
+        }
+    },
+    "require": {}
+}
