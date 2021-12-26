@@ -33,14 +33,7 @@ class Laraboots5ServiceProvider extends ServiceProvider
             __DIR__.'/../resources/laraboots5' => public_path('vendor/laraboots5'),
         ], 'asset-laraboots5');
         $this->loadAllComponent();
-        // $this->loadViewComponentsAs('lb5', [
-        //     Alert::class,
-        //     Input::class,
-        //     InputGroup::class,
-        //     Navs::class,
-        // ]);
-        // $this->configurePublishing();
-        
+
         # Jika Debug true aktifkan Route dokumentasi 
         if (config('app.debug')) {
             $this->loadRoutesFrom(__DIR__.'/../routes/laraboots5.php');
@@ -51,6 +44,7 @@ class Laraboots5ServiceProvider extends ServiceProvider
     {
         $this->registerComponent('input');
         $this->registerComponent('input-group');
+        $this->registerComponent('input-floating');
         $this->registerComponent('alert');
         $this->registerComponent('navs');
         $this->callAfterResolving(BladeCompiler::class, function () {
