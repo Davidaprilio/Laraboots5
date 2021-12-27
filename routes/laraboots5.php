@@ -13,10 +13,13 @@ Route::prefix('/docs')->middleware('web')->group(function () {
         return view('laraboots5::docs.forms');
     });
 
-    Route::post('/forms', function()
+    Route::post('/flash-message', function()
     {
-        request()->validate([
-            'test' => 'required|email|min:5|max:10'
-        ]);
-    });
+        return redirect()->back()->with('flash-demo', 'Flash messages');
+    })->name('flash');
+
+    Route::post('/error', function()
+    {
+        return redirect()->back()->withErrors(['error-demo' => 'Error messages']);   
+    })->name('error');
 });
