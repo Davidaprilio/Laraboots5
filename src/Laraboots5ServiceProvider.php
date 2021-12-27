@@ -43,6 +43,8 @@ class Laraboots5ServiceProvider extends ServiceProvider
     protected function loadAllComponent()
     {
         $this->registerComponent('input');
+        $this->registerComponent('form');
+        $this->registerComponent('select');
         $this->registerComponent('input-group');
         $this->registerComponent('input-floating');
         $this->registerComponent('alert');

@@ -20,7 +20,8 @@
     @if($old) value="{{ old($name) ?? $value }}" @endif
     {{ $attributes->class([
       'form-control', 
-      'is-invalid' => $errors->has($name)]) }}
+      'is-invalid' => ($validation && $errors->has($name)) ? $errors->has($name) : false
+      ]) }}
     {{ $attributes }}>
   @if($validation)
    @error($name)
