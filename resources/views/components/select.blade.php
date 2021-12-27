@@ -4,10 +4,10 @@
     'validation' => false,
     'old' => false,
     'options' => [],
-    'mb' => 3,
+    'parentClass' => 'mb-3',
     'name' => false,
 ])
-<div class="mb-{{ $mb }}">
+<div class="{{ $parentClass }}">
     @if($label)
     <label @if($id) for="{{ $id }}" @endif class="form-label">{{ $label }}</label>
     @endif
