@@ -4,14 +4,14 @@
     'validation' => false,
     'old' => false,
     'value' => false,
-    'mb' => 3,
+    'parentClass' => 'mb-3',
     'name' => false,
     'addonText' => false,
     'addonPosition' => 'before',
     'type' => 'text',
     'idGroup' => Str::random(6)
 ])
-<div class="mb-{{ $mb }}">
+<div class="{{ $parentClass }}">
     @if($label)
     <label @if($id) for="{{ $id }}" @endif class="form-label">{{ $label }}</label>
     @endif
