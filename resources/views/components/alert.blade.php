@@ -9,7 +9,11 @@
 @if ($error)
     {{-- Error handle --}}
     @error($error)
-    <div {{ $attributes->class(['alert', 'alert-'.$type]) }} role="alert" {{ $attributes }}>
+    <div {{ $attributes->class([
+            'alert', 
+            'alert-'.$type,
+            'alert-dismissible fade show' => $close
+        ]) }} role="alert" {{ $attributes }}>
         @if ($head)
             <h4 class="alert-heading">{{ $head }}</h4>
         @endif
@@ -24,7 +28,11 @@
     
     {{-- Flash Message handle --}}
     @if (session()->has($flashMessage))
-    <div {{ $attributes->class(['alert', 'alert-'.$type]) }} role="alert" {{ $attributes }}>
+    <div {{ $attributes->class([
+            'alert', 
+            'alert-'.$type,
+            'alert-dismissible fade show' => $close
+        ]) }} role="alert" {{ $attributes }}>
         @if ($head)
             <h4 class="alert-heading">{{ $head }}</h4>
         @endif
@@ -38,7 +46,11 @@
     
 @else
     {{-- Basic Alert --}}
-    <div {{ $attributes->class(['alert', 'alert-'.$type]) }} role="alert" {{ $attributes }}>
+    <div {{ $attributes->class([
+            'alert', 
+            'alert-'.$type,
+            'alert-dismissible fade show' => $close
+        ]) }} role="alert" {{ $attributes }}>
         @if ($head)
             <h4 class="alert-heading">{{ $head }}</h4>
         @endif
