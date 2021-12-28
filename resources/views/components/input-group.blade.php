@@ -1,6 +1,6 @@
 @props([
     'label' => false,
-    'id' => false,
+    'id' => Str::random(6),
     'validation' => false,
     'old' => false,
     'value' => false,
@@ -13,7 +13,7 @@
 ])
 <div class="{{ $parentClass }}">
     @if($label)
-    <label @if($id) for="{{ $id }}" @endif class="form-label">{{ $label }}</label>
+    <label for="{{ $id }}" class="form-label">{{ $label }}</label>
     @endif
     <div class="input-group @if ($validation && $errors->has($name)) has-validation @endif">
         @if ($addonPosition == 'before')
@@ -26,9 +26,9 @@
         @endif
         <input
             type="{{ $type }}"
+            value="{{ $value ?? old($name) }}"
             aria-describedby="{{ $idGroup }}" 
-            @if($id) id="{{ $id }}" @endif
-            @if($old) value="{{ old($name) ?? $value }}" @endif
+            id="{{ $id }}"
             {{ $attributes->class([
                 'form-control', 
                 'is-invalid' => ($validation && $errors->has($name)) ? $errors->has($name) : false
