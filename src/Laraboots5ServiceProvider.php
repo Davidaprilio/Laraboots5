@@ -28,21 +28,22 @@ class Laraboots5ServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'laraboots5');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'laraboots5');
         $this->publishes([
-            __DIR__.'/../resources/laraboots5' => public_path('vendor/laraboots5'),
+            __DIR__ . '/../resources/laraboots5' => public_path('vendor/laraboots5'),
         ], 'asset-laraboots5');
         $this->loadAllComponent();
 
         # Jika Debug true aktifkan Route dokumentasi 
         if (config('app.debug')) {
-            $this->loadRoutesFrom(__DIR__.'/../routes/laraboots5.php');
+            $this->loadRoutesFrom(__DIR__ . '/../routes/laraboots5.php');
         }
     }
-    
+
     protected function loadAllComponent()
     {
         $this->registerComponent('input');
+        $this->registerComponent('textarea');
         $this->registerComponent('form');
         $this->registerComponent('select');
         $this->registerComponent('input-group');
@@ -61,14 +62,14 @@ class Laraboots5ServiceProvider extends ServiceProvider
      */
     protected function registerComponent(string $component)
     {
-        Blade::component('laraboots5::components.'.$component, 'lb5-'.$component);
+        Blade::component('laraboots5::components.' . $component, 'lb5-' . $component);
     }
 
     protected function configurePublishing()
     {
         # Views Components
         $this->publishes([
-            __DIR__.'/../resources/views/components' => resource_path('views/vendor/laraboots5/components'),
+            __DIR__ . '/../resources/views/components' => resource_path('views/vendor/laraboots5/components'),
         ], 'laraboots5-views');
     }
 }
