@@ -42,14 +42,14 @@ class Laraboots5ServiceProvider extends ServiceProvider
 
     protected function loadAllComponent()
     {
-        $this->registerComponent('input');
-        $this->registerComponent('textarea');
-        $this->registerComponent('form');
-        $this->registerComponent('select');
-        $this->registerComponent('input-group');
-        $this->registerComponent('input-floating');
-        $this->registerComponent('alert');
-        $this->registerComponent('navs');
+        $this->registerComponent('5|4', 'input');
+        $this->registerComponent('5|4', 'textarea');
+        $this->registerComponent('5|4', 'form');
+        $this->registerComponent('5|4', 'select');
+        $this->registerComponent('5|4', 'input-group');
+        $this->registerComponent('5|4', 'input-floating');
+        $this->registerComponent('5|4', 'alert');
+        $this->registerComponent('5|4', 'navs');
         $this->callAfterResolving(BladeCompiler::class, function () {
         });
     }
@@ -60,9 +60,15 @@ class Laraboots5ServiceProvider extends ServiceProvider
      * @param  string  $component
      * @return void
      */
-    protected function registerComponent(string $component)
+    protected function registerComponent(string $version, string $component)
     {
-        Blade::component('laraboots5::components.' . $component, 'lb5-' . $component);
+        $v = explode('|', $version);
+        foreach ($v as $ver) {
+            Blade::component("laraboots::components.bs{$ver}.{$component}", "bs{$ver}-{$component}");
+            if ($ver == '5') {
+                Blade::component("laraboots::components.bs5.{$component}", 'lb5-' . $component);
+            }
+        }
     }
 
     protected function configurePublishing()
