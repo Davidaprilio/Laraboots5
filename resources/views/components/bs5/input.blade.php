@@ -8,7 +8,33 @@
     'size' => null,
 ])
 
-@php $id_input = $id ?? $name . '-input'; @endphp
+@aware([
+    'model' => null
+])
+
+@php
+    $id_input = $id ?? $name . '-input';
+    $aviable_type = [
+        'text',
+        'number',
+        'password',
+        'date',
+        'file',
+        'radio',
+        'checkbox',
+    ];
+
+    if (!in_array($type, $aviable_type)) {
+        throw new \Exception("Invalid type input {$name}", 1);
+    }
+
+    if ($model) {
+        $value = $model->{$name} ?? null;
+    }
+    
+    $value = $value ?? (old($name, $value ?? null) ?? $default);
+
+@endphp
 
 <input
 {{ $attributes->class([
@@ -19,7 +45,7 @@
     'id' => $id_input,
     'name' => $name,
     'type' => $type,
-    'value' => $value ?? (old($name, $value ?? null) ?? $default),
+    'value' => $value,
     'autocomplete' => $name,
 ]) }} 
 />
