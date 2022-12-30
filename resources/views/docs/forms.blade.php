@@ -1,26 +1,41 @@
-@extends('laraboots5::layouts.app')
-@section('content')
-<div class="container">
-	<h1>Forms</h1>
-	<p>Component Form seperti <code>&lt;input&gt; &lt;textarea&gt;</code> yang diringkas dengan pemakaian sangat mudah.
-		dokumentasi dari <a href="https://getbootstrap.com/docs/5.0/forms/form-control/">bootstarp form</a> </p>
+<x-lbdocs-page title="Forms">
 
-	{{-- Input --}}
-	<section class="mt-4">
-		<h3>Input</h3>
+	<x-bs-form action="/">
+		<x-bs-form.input label="Phone" name="phone" />
+
+		<x-bs-button>Kirim</x-bs-button>
+	</x-bs-form>
+
+
+
+
+	<p>
+		Component Form seperti <x-bs-code code="<input> <textarea>" /> yang diringkas dengan pemakaian sangat mudah.
+		dokumentasi dari 
+		<a href="https://getbootstrap.com/docs/5.0/forms/form-control/">bootstarp form</a> 
+	</p>
+
+	
+	@php
+		$codes = [
+			'<x-bs-input label="Label input" required name="form1" id="label-input" placeholder="Ketik sesuatu..." validation="true" />',
+			'<x-bs-textarea label="Label textarea" required name="form2" id="label-textarea" validation="true" />',
+		]
+	@endphp
+	<x-lbdocs-section title="Input" :codes="$codes">
+		@slot('preview')
 		<form action="{{ url('docs/form') }}" method="POST">
 			@csrf
 			<div class="border rounded p-4">
-				<x-lb5-input label="Label input" required name="form1" id="label-input" placeholder="Ketik sesuatu..."
+				<x-bs-input label="Label input" required name="form1" id="label-input" placeholder="Ketik sesuatu..."
 					validation="true" />
-				<x-lb5-textarea label="Label textarea" required name="form2" id="label-textarea" validation="true" />
+				<x-bs-textarea label="Label textarea" required name="form2" id="label-textarea" validation="true" />
 				<button class="btn btn-primary">Test</button>
 			</div>
 		</form>
-		{{-- Code --}}
-		<div class="bg-light">
-			<pre>&lt;{{ 'x-lb5-input label="Label input" required name="test" id="label-input" placeholder="Ketik sesuatu..." validation="true" />' }}</pre>
-		</div>
+		@endslot
+		
+		@slot('bottom')	
 		<div class="">
 			<h5>Atribute tambahan</h5>
 			<ul>
@@ -38,26 +53,38 @@
 		</div>
 		<p>Semua attribute yang biasa digunakan di <code>&lt;input&gt;</code> bisa tetap digunakan dan attribute yang
 			ditambahkan</p>
-	</section>
+		@endslot
+	</x-lbdocs-section>
 
-	{{-- Input Group --}}
-	<section class="mt-4">
-		<h3>Input Group</h3>
-		<div class="border rounded p-4">
-			<x-lb5-input-group label="Input group default" addon-text="Awal" placeholder="Input Group Default" />
-			<x-lb5-input-group label="Input group position after" addon-text="Akhir" addon-position="after"
-				placeholder="Input Group addon position" />
-			<x-lb5-input-group label="Input group custom" placeholder="Input Group Button addon">
-				<button class="btn btn-success">Kirim</button>
-			</x-lb5-input-group>
-			<x-lb5-input-group label="Input group custom" addon-position="after" placeholder="Input Group Button addon">
-				<button class="btn btn-success">Kirim</button>
-			</x-lb5-input-group>
-		</div>
-		{{-- Code --}}
-		<div class="bg-light">
-			<pre>&lt;{{ 'x-lb5-input-group label="Input group default" addon-text="Awal" placeholder="Input Group Default" />' }}&#10;&#10;&lt;{{ 'x-lb5-input-group label="Input group position after" addon-text="Akhir" addon-position="after" placeholder="Input Group addon position" />' }}&#10;&#10;&lt;{{ 'x-lb5-input-group label="Input group custom" placeholder="Input Group Button addon">' }}&#10;{{ '	<button class="btn btn-success">Kirim</button>' }}&#10;&lt;{{ '/x-lb5-input-group>' }}&#10;&#10;&lt;{{ 'x-lb5-input-group label="Input group custom" addon-position="after" placeholder="Input Group Button addon">' }}&#10;{{ '	<button class="btn btn-success">Kirim</button>' }}&#10;&lt;{{ '/x-lb5-input-group>' }}</pre>
-		</div>
+	@php
+		$codes = [
+			'<x-bs-input-group label="Input group default" addon-text="Awal" placeholder="Input Group Default" />',
+			'',
+			'<x-bs-input-group label="Input group position after" addon-text="Akhir" addon-position="after"',
+			'	placeholder="Input Group addon position" />',
+			'',
+			'<x-bs-input-group label="Input group custom" placeholder="Input Group Button addon">',
+			'	<button class="btn btn-success">Kirim</button>',
+			'</x-bs-input-group>',
+			'',
+			'<x-bs-input-group label="Input group custom" addon-position="after" placeholder="Input Group Button addon">',
+			'	<button class="btn btn-success">Kirim</button>',
+			'</x-bs-input-group>',
+		]
+	@endphp
+	<x-lbdocs-section title="Input Group" :codes="$codes">
+		@slot('preview')
+		<x-bs-input-group label="Input group default" addon-text="Awal" placeholder="Input Group Default" />
+		<x-bs-input-group label="Input group position after" addon-text="Akhir" addon-position="after"
+			placeholder="Input Group addon position" />
+		<x-bs-input-group label="Input group custom" placeholder="Input Group Button addon">
+			<button class="btn btn-success">Kirim</button>
+		</x-bs-input-group>
+		<x-bs-input-group label="Input group custom" addon-position="after" placeholder="Input Group Button addon">
+			<button class="btn btn-success">Kirim</button>
+		</x-bs-input-group>
+		@endslot
+		@slot('bottom')
 		<div class="">
 			<h5>Atribute tambahan</h5>
 			<ul>
@@ -75,9 +102,9 @@
 		</div>
 		<p>Semua attribute yang biasa digunakan di <code>&lt;input&gt;</code> bisa tetap digunakan dan attribute yang
 			ditambahkan</p>
-	</section>
+		@endslot
+	</x-lbdocs-section>
 
 
 
-</div>
-@endsection
+</x-lbdocs-page>

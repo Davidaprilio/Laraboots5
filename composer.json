@@ -1,7 +1,11 @@
 {
-    "name": "davidaprilio/laraboots5",
+    "name": "davidarl/laraboots5",
     "description": "Bootstrap5 component for Laravel",
-    "keywords": ["laravel", "component", "bootstrap5"],
+    "keywords": [
+        "laravel",
+        "component",
+        "bootstrap5"
+    ],
     "license": "MIT",
     "support": {
         "issues": "https://github.com/Davidaprilio/Laraboots5/issues",
@@ -9,21 +13,49 @@
     },
     "authors": [
         {
-            "name": "Dav0x0",
+            "name": "David Aprilio",
             "email": "david1.aprilio4@gmail.com"
         }
     ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/contracts": "^9.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^6.0",
+        "nunomaduro/larastan": "^2.0.1",
+        "orchestra/testbench": "^7.0",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "phpunit/phpunit": "^9.5"
+    },
     "autoload": {
         "psr-4": {
-            "Davidaprilio\\Laraboots5\\": "src/"
+            "DavidArl\\Laraboots5\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Davidaprilio\\Laraboots5\\Laraboots5ServiceProvider"
+                "DavidArl\\Laraboots5\\Laraboots5ServiceProvider"
             ]
         }
     },
-    "require": {}
+    "scripts": {
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": false
+        }
+    }
 }

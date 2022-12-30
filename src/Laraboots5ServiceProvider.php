@@ -1,13 +1,9 @@
 <?php
 
-namespace Davidaprilio\Laraboots5;
+namespace DavidArl\Laraboots5;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-// use Davidaprilio\Laraboots5\View\Components\Alert;
-// use Davidaprilio\Laraboots5\View\Components\Navs;
-// use Davidaprilio\Laraboots5\View\Components\Input;
-// use Davidaprilio\Laraboots5\View\Components\InputGroup;
 
 class Laraboots5ServiceProvider extends ServiceProvider
 {
@@ -37,19 +33,39 @@ class Laraboots5ServiceProvider extends ServiceProvider
         # Jika Debug true aktifkan Route dokumentasi 
         if (config('app.debug')) {
             $this->loadRoutesFrom(__DIR__ . '/../routes/laraboots5.php');
+            $this->loadDocsComponents();
         }
+    }
+
+    protected function loadDocsComponents()
+    {
+        $this->registerComponent('page', true);
+        $this->registerComponent('section', true);
+        $this->registerComponent('codes', true);
     }
 
     protected function loadAllComponent()
     {
-        $this->registerComponent('5|4', 'input');
-        $this->registerComponent('5|4', 'textarea');
-        $this->registerComponent('5|4', 'form');
-        $this->registerComponent('5|4', 'select');
-        $this->registerComponent('5|4', 'input-group');
-        $this->registerComponent('5|4', 'input-floating');
-        $this->registerComponent('5|4', 'alert');
-        $this->registerComponent('5|4', 'navs');
+        // From
+        $this->registerComponent('form.input');
+
+
+        // Components
+        $this->registerComponent('progress');
+        $this->registerComponent('progress-bar');
+        $this->registerComponent('spinner');
+
+
+        $this->registerComponent('input');
+        $this->registerComponent('textarea');
+        $this->registerComponent('form');
+        $this->registerComponent('button');
+        $this->registerComponent('select');
+        $this->registerComponent('code');
+        $this->registerComponent('input-group');
+        $this->registerComponent('input-floating');
+        $this->registerComponent('alert');
+        $this->registerComponent('navs');
         $this->callAfterResolving(BladeCompiler::class, function () {
         });
     }
@@ -60,14 +76,14 @@ class Laraboots5ServiceProvider extends ServiceProvider
      * @param  string  $component
      * @return void
      */
-    protected function registerComponent(string $version, string $component)
+    protected function registerComponent(string $component, bool $docs = false)
     {
-        $v = explode('|', $version);
-        foreach ($v as $ver) {
-            Blade::component("laraboots::components.bs{$ver}.{$component}", "bs{$ver}-{$component}");
-            if ($ver == '5') {
-                Blade::component("laraboots::components.bs5.{$component}", 'lb5-' . $component);
-            }
+        if ($docs) {
+            Blade::component("laraboots5::components.docs.{$component}", "lbdocs-{$component}");
+        } else {
+            $bootstrap_version = config('laraboots5.bs_version') ?? '5';
+            Blade::component("laraboots5::components.bs{$bootstrap_version}.{$component}", "bs-{$component}");
+            Blade::component("laraboots5::components.bs5.{$component}", "lb5-{$component}");
         }
     }
 
