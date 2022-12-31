@@ -94,9 +94,51 @@
 
 
 	@php
+		$codes = [
+			'<x-bs-alert.basic>Alert basic</x-bs-alert.basic>',
+			'',
+			'<x-bs-alert.basic message="Alert basic default type" />',
+			'<x-bs-alert.basic message="Alert basic with success type" type="success" />',
+			'<x-bs-alert.basic message="Alert basic with dismiss button" type="info" :dismiss="true"  />',
+		]
+	@endphp
+	<x-lbdocs-section title="Basic" :codes="$codes" push>
+		@slot('preview')
+		<x-bs-alert.basic>Alert basic</x-bs-alert.basic>
+
+		<x-bs-alert.basic message="Alert basic default type" />
+		<x-bs-alert.basic message="Alert basic with success type" type="success" />
+		<x-bs-alert.basic message="Alert basic with dismiss button" type="info" :dismiss="true"  />
+		@endslot		
+	</x-lbdocs-section>
+
+	
+
+	@php
+		$codes = [
+			'<x-bs-alert.flash name="alert-1" />',
+			'<x-bs-alert.flash name="alert-2 type" type="success" />',
+			'<x-bs-alert.flash name="alert-3 button" type="info" :dismiss="true"  />',
+		]
+	@endphp
+	<x-lbdocs-section title="Flash" :codes="$codes" push>
+		@slot('preview')
+		<x-bs-alert.flash name="alert-1" />
+		<x-bs-alert.flash name="alert-2" type="success" />
+		<x-bs-alert.flash name="alert-3" type="info" :dismiss="true"  />
+
+		<div class="btn-group btn-group-sm">
+			<a href="/lb5/docs/alert/alert-1?id=flash" class="btn btn-outline-primary">Show Alert 1</a>
+			<a href="/lb5/docs/alert/alert-2?id=flash" class="btn btn-outline-primary">Show Alert 2</a>
+			<a href="/lb5/docs/alert/alert-3?id=flash" class="btn btn-outline-primary">Show Alert 3</a>
+		</div>
+		@endslot
+	</x-lbdocs-section>
+
+	@php
 		$codes = ['<x-bs-alert close="true">Alert dengan close button</x-bs-alert>']
 	@endphp
-	<x-lbdocs-section title="Close button" :codes="$codes" push>
+	<x-lbdocs-section title="Close button" :codes="$codes">
 		@slot('preview')
 		<x-bs-alert close="true">Alert dengan close button</x-bs-alert>
 		@endslot

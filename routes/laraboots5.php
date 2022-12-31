@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 
 Route::prefix('/lb5/docs')->middleware('web')->group(function () {
 
@@ -38,6 +40,20 @@ Route::prefix('/lb5/docs')->middleware('web')->group(function () {
     Route::post('/flash-message', function () {
         return redirect()->back()->with('flash-demo', 'Flash messages');
     })->name('flash');
+
+    // Demo Alert Error & Flash
+    Route::any('/alert/{name}', function ($name) {
+        $is_error = request()->has('error');
+        $message = request()->get('message') ?? 'Pesan dari server ' . rand(100, 999);
+        $id = request()->get('id') ?? '';
+        $response = Redirect::to(URL::previous() . "#{$id}");
+        if ($is_error) {
+            $response->withErrors([$name => $message]);
+        } else {
+            $response->with($name, $message);
+        }
+        return $response;
+    })->name('lb5.demo.alert');
 
     Route::post('/error', function () {
         return redirect()->back()->withErrors(['error-demo' => 'Error messages']);
