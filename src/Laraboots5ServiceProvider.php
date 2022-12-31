@@ -71,6 +71,7 @@ class Laraboots5ServiceProvider extends ServiceProvider
         $this->registerComponent('input-floating');
         $this->registerComponent('navs');
         $this->registerComponent('link');
+        $this->registerComponent('breadcrumb');
 
         $this->registerComponent('alert');
         $this->registerComponent('alert.basic');

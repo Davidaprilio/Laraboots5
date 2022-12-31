@@ -23,6 +23,7 @@ Route::prefix('/lb5/docs')->middleware('web')->group(function () {
     // Components
     Route::prefix('/components')->group(function () {
         Route::view('/alerts', lbv('alert'));
+        Route::view('/breadcrumb', lbv('breadcrumb'));
     });
 
 

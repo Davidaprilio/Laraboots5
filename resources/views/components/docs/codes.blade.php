@@ -5,9 +5,9 @@
         $codes = $codes->__toString();
     }
 @endphp
-<div class="bg-light">
+<div class="bg-light rounded-bottom border border-top-0">
 <pre>
-{{ $codes }}
+<code>{{ $codes }}</code>
 </pre>
     {{-- <pre>@foreach ($codes as $code){{ $code }}&#10;@endforeach</pre> --}}
 </div>

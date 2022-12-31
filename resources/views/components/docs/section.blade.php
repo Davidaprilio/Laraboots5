@@ -19,7 +19,7 @@
     </div>
     
     @isset($preview)
-    <div class="rounded border p-4">
+    <div class="rounded-top border p-4">
         {{ $preview }}
     </div>
     @if ($preview->attributes['code'] ?? false)

@@ -1,6 +1,8 @@
 <x-lbdocs-page title="Alert">
 	
-	<h5 class="fw-light">Biasa digunakan untuk notifikasi pesan, sama seperti di <a href="https://getbootstrap.com/docs/5.0/components/alerts/">Bootstarp Alert</a>, tetapi yang ini mendapatkan tambahan fungsi untuk memudahkan menerima pesan kesalahan dan pesan kilat.</h5>	
+	<h5 class="fw-light">
+		Alert dari bootstrap dengan sentuhan untuk memeriksa pesan dari session atau error yang dikirimkan oleh server dan type peringatan yang tersedia. dokumnetasi alert dari <x-lbdocs-blank href="5.2/components/alerts/">Bootstarp Alert</x-lbdocs-blank>
+	</h5>
 
 
 	@php

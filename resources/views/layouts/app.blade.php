@@ -10,11 +10,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     {{-- <link href="{{ asset('/vendor/laraboots5/enlighterjs.bootstrap4.min.css') }}" rel="stylesheet"> --}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/enlighterjs@3.4.0/dist/enlighterjs.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/enlighterjs@3.4.0/dist/enlighterjs.bootstrap4.min.css">
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/enlighterjs@3.4.0/dist/enlighterjs.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/enlighterjs@3.4.0/dist/enlighterjs.bootstrap4.min.css"> --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/google-light.min.css">
 
     <title>Laravel Bootstrap Component</title>
+
     <style>
         :root {
             --bd-violet-rgb: 112.520718,44.062154,249.437846;
@@ -32,6 +35,21 @@
         .enlighter-toolbar .enlighter-btn-raw,
         .enlighter-btn-collapse {
             display: none !important;
+        }
+
+        pre {
+            tab-size: 2;
+            margin-bottom: 0;
+        }
+        
+        .hljs-copy-button {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+
+        pre code.hljs {
+            background: #f8f9fa !important;
+            margin-bottom: -21px;
         }
         
         .position-sticky {
@@ -121,7 +139,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-12 col-md-10">
+        <div class="col-12 col-md-10 pt-5">
             @yield('content')
         </div>
     </div>
@@ -130,18 +148,26 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     {{-- <script src="{{ asset('/vendor/laraboots5/enlighterjs.min.js') }}"></script> --}}
-    <script src="https://cdn.jsdelivr.net/npm/enlighterjs@3.4.0/dist/enlighterjs.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/enlighterjs@3.4.0/dist/enlighterjs.min.js"></script> --}}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://unpkg.com/highlightjs-blade/dist/blade.min.js"></script>
+    <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+
     <script>
+        hljs.highlightAll();
+        hljs.addPlugin(new CopyButtonPlugin());
+
         var code = document.querySelectorAll('pre');
-        code.forEach(elCode => {
-            EnlighterJS.enlight(elCode, {
-                language: 'html',
-                theme: 'bootstrap4',
-                indent: 2,
-                textOverflow: 'scroll',
-                linenumbers: false,
-            });
-        });
+        // code.forEach(elCode => {
+        //     EnlighterJS.enlight(elCode, {
+        //         language: 'html',
+        //         theme: 'bootstrap4',
+        //         indent: 2,
+        //         textOverflow: 'scroll',
+        //         linenumbers: false,
+        //     });
+        // });
 
         const pathUrl = window.location.origin + window.location.pathname;
         const activeNav = document.querySelector(`#navigation-menu a[href="${pathUrl}"]`)
