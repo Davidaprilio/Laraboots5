@@ -1,9 +1,18 @@
-<section class="mt-4" @isset($push)id="{{ $push }}@endisset">
-    @isset($push)
-    <a href="#{{ $push }}" class="link-dark text-decoration-none"><h3>{{ $title }}</h3></a>
+@php
+    $is_push = isset($push);
+    if ($is_push) {
+        $push = gettype($push) === 'string' ? $push : strtolower(str_replace(' ', '-', $title));
+    }
+@endphp
+
+<section class="mt-4" @if($is_push)id="{{ $push }}@endif">
+    @if ($is_push)
+    <a href="#{{ $push }}" class="link-dark text-decoration-none">
+        <h3 class="title-section">{{ $title }}</h3>
+    </a>
     @else
-    <h3>{{ $title }}</h3>    
-    @endisset
+    <h3 class="title-section">{{ $title }}</h3>
+    @endif
 
     <div>
         {{ $slot }}
@@ -23,7 +32,7 @@
         {{ $bottom }}
     @endisset
 
-    @pushIf(isset($push),'this-page-item')
+    @pushIf($is_push,'this-page-item')
         <x-lbdocs-item :id="$push" :text="$title"/>
     @endPushIf
 <section>

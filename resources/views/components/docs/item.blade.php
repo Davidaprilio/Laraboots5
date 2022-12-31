@@ -1,4 +1,4 @@
 @props(['id','text'])
 <li>
-    <a href="#{{ $id }}" class="link-dark">{{ $text }}</a>
+    <a href="#{{ $id }}">{{ $text }}</a>
 </li>

@@ -7,8 +7,8 @@
             {{ $slot }}
         </div>
 
-        <div class="col-3 d-none d-md-block position-relative">
-            <div class="position-sticky" style="top: 30px">
+        <div class="col-3 d-none d-md-block position-relative" id="nav-items">
+            <div class="position-sticky pt-2">
                 <h5>On this page</h5>
                 <hr>
                 <ul>

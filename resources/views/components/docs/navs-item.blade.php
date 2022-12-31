@@ -3,8 +3,11 @@
     'href' => null
 ])
 
+@aware(['path' => null])
+
 @php
     $href = $href ?? strtolower(str_replace(' ', '-', $text));
+    $href = $path ? "{$path}/{$href}" : $href;
 @endphp
 
 <li>

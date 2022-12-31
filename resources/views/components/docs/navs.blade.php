@@ -1,4 +1,4 @@
-@props(['icon', 'text'])
+@props(['icon', 'text', 'path' => null])
 <li class="py-2">
     <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
         <i class="{{ $icon }} me-2"></i>

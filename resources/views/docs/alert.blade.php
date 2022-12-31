@@ -18,7 +18,7 @@
 			'</x-bs-form>'
 		]
 	@endphp
-	<x-lbdocs-section title="Event Listener" :codes="$codes" push="event-listener">
+	<x-lbdocs-section title="Event Listener" :codes="$codes" push>
 		<p>
 			Memudahkan saat menerima 
 			<a href="https://laravel.com/docs/8.x/validation#working-with-error-messages" target="_blank">Error Message</a> atau 
@@ -59,7 +59,7 @@
 			'<x-bs-alert type="dark">A simple dark alert—check it out!</x-bs-alert>',
 		]
 	@endphp
-	<x-lbdocs-section title="Warna" :codes="$codes" push="warna">
+	<x-lbdocs-section title="Warna" :codes="$codes" push>
 		@slot('preview')
 		<x-bs-alert>A simple primary alert—check it out!</x-bs-alert>
 		<x-bs-alert type="secondary">A simple secondary alert—check it out!</x-bs-alert>
@@ -82,7 +82,7 @@
 			'</x-bs-alert>'
 		]
 	@endphp
-	<x-lbdocs-section title="Header" :codes="$codes">
+	<x-lbdocs-section title="Header" :codes="$codes" push>
 		@slot('preview')
 		<x-bs-alert head="Header Alert" type="success">
 			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid dicta, atque ducimus accusantium, ratione eius voluptatum eveniet libero quos exercitationem nisi, repellendus mollitia illo rerum perferendis nulla saepe nihil reiciendis!</p>
@@ -96,7 +96,7 @@
 	@php
 		$codes = ['<x-bs-alert close="true">Alert dengan close button</x-bs-alert>']
 	@endphp
-	<x-lbdocs-section title="Close button" :codes="$codes">
+	<x-lbdocs-section title="Close button" :codes="$codes" push>
 		@slot('preview')
 		<x-bs-alert close="true">Alert dengan close button</x-bs-alert>
 		@endslot
