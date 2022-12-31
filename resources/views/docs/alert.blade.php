@@ -118,19 +118,37 @@
 		$codes = [
 			'<x-bs-alert.flash name="alert-1" />',
 			'<x-bs-alert.flash name="alert-2 type" type="success" />',
-			'<x-bs-alert.flash name="alert-3 button" type="info" :dismiss="true"  />',
+			'<x-bs-alert.flash name="alert-3 button" type="info" :dismiss="false"  />',
 		]
 	@endphp
 	<x-lbdocs-section title="Flash" :codes="$codes" push>
 		@slot('preview')
 		<x-bs-alert.flash name="alert-1" />
 		<x-bs-alert.flash name="alert-2" type="success" />
-		<x-bs-alert.flash name="alert-3" type="info" :dismiss="true"  />
+		<x-bs-alert.flash name="alert-3" type="info" :dismiss="false"  />
 
 		<div class="btn-group btn-group-sm">
 			<a href="/lb5/docs/alert/alert-1?id=flash" class="btn btn-outline-primary">Show Alert 1</a>
 			<a href="/lb5/docs/alert/alert-2?id=flash" class="btn btn-outline-primary">Show Alert 2</a>
 			<a href="/lb5/docs/alert/alert-3?id=flash" class="btn btn-outline-primary">Show Alert 3</a>
+		</div>
+		@endslot
+	</x-lbdocs-section>
+
+	@php
+		$codes = [
+			'<x-bs-alert.error name="error-1" />',
+			'<x-bs-alert.error name="error-2" :dismiss="false"  />',
+		]
+	@endphp
+	<x-lbdocs-section title="Error" :codes="$codes" push>
+		@slot('preview')
+		<x-bs-alert.error name="error-1" />
+		<x-bs-alert.error name="error-2" :dismiss="false"  />
+
+		<div class="btn-group btn-group-sm">
+			<a href="/lb5/docs/alert/error-1?id=error&error" class="btn btn-outline-primary">Show Error 1</a>
+			<a href="/lb5/docs/alert/error-2?id=error&error" class="btn btn-outline-primary">Show Error 2</a>
 		</div>
 		@endslot
 	</x-lbdocs-section>
