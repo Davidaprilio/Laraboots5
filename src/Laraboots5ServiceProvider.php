@@ -42,6 +42,10 @@ class Laraboots5ServiceProvider extends ServiceProvider
         $this->registerComponent('page', true);
         $this->registerComponent('section', true);
         $this->registerComponent('codes', true);
+        $this->registerComponent('item-tree', true);
+        $this->registerComponent('item', true);
+        $this->registerComponent('navs-item', true);
+        $this->registerComponent('navs', true);
     }
 
     protected function loadAllComponent()

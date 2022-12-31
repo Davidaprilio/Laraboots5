@@ -18,7 +18,7 @@
 			'</x-bs-form>'
 		]
 	@endphp
-	<x-lbdocs-section title="Event Listener" :codes="$codes">
+	<x-lbdocs-section title="Event Listener" :codes="$codes" push="event-listener">
 		<p>
 			Memudahkan saat menerima 
 			<a href="https://laravel.com/docs/8.x/validation#working-with-error-messages" target="_blank">Error Message</a> atau 
@@ -59,7 +59,7 @@
 			'<x-bs-alert type="dark">A simple dark alert—check it out!</x-bs-alert>',
 		]
 	@endphp
-	<x-lbdocs-section title="Warna" :codes="$codes">
+	<x-lbdocs-section title="Warna" :codes="$codes" push="warna">
 		@slot('preview')
 		<x-bs-alert>A simple primary alert—check it out!</x-bs-alert>
 		<x-bs-alert type="secondary">A simple secondary alert—check it out!</x-bs-alert>

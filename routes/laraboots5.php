@@ -2,15 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('/docs')->middleware('web')->group(function () {
+Route::prefix('/lb5/docs')->middleware('web')->group(function () {
+
+    // laraboots5 view path
+    function lbv(string $view_name) {
+        return "laraboots5::docs.{$view_name}";
+    }
 
     Route::get('/alert', function () {
         return view('laraboots5::docs.alert');
     });
 
-    Route::get('/forms', function () {
-        return view('laraboots5::docs.forms');
-    });
+    // Forms
+    Route::view('forms-overview', lbv('forms'));
+    Route::view('forms-control', lbv('forms'));
+    Route::view('forms-select', lbv('forms'));
+    Route::view('forms-check-radio', lbv('forms'));
+    Route::view('forms-range', lbv('forms'));
 
     Route::post('/form', function () {
         request()->validate([
