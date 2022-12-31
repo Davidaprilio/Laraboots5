@@ -1,5 +1,4 @@
 @props([
-    'id' => null,
     'validation' => true,
     'type' => 'text',
     'value' => null,
@@ -13,7 +12,6 @@
 ])
 
 @php
-    $id_input = $id ?? $name . '-input';
     $aviable_type = [
         'text',
         'number',
@@ -42,7 +40,6 @@
     "form-control-{$size}" => in_array($size, ['sm', 'lg']),
     'is-invalid' => $validation && $errors->has($name),
 ])->merge([
-    'id' => $id_input,
     'name' => $name,
     'type' => $type,
     'value' => $value,

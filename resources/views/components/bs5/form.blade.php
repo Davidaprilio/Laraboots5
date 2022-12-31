@@ -22,9 +22,11 @@
     'method' => $method == 'GET' ? 'GET' : 'POST',
     'enctype' => $file ? 'multipart/form-data' : false,
 ]) }}>
-    @csrf
-    @if (!in_array($method, ['GET', 'POST']))
-        @method($method)
+    @if ($method !== 'GET')
+        @csrf
+        @if ($method !== 'POST')
+            @method($method)
+        @endif
     @endif
     {{ $slot }}
 </form>

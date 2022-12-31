@@ -22,6 +22,9 @@
     <div class="rounded border p-4">
         {{ $preview }}
     </div>
+    @if ($preview->attributes['code'] ?? false)
+    <x-lbdocs-codes :codes="$codes" />
+    @endif
     @endisset
 
     @isset($codes)

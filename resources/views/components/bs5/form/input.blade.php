@@ -10,6 +10,9 @@
     'col' => 'mb-4',
 ])
 
+@php
+    $id = $id ?? $name . '-input';
+@endphp
 
 <div class="form-group {{ $col }}">
     @if ($label)
@@ -18,7 +21,6 @@
 
     <x-bs-input {{ $attributes->merge([
         'id' => $id,
-        'label' => $label,
         'validation' => $validation,
         'type' => $type,
         'size' => $size,

@@ -11,8 +11,8 @@ Route::prefix('/lb5/docs')->middleware('web')->group(function () {
 
     // Forms
     Route::prefix('forms')->group(function () {
-        Route::view('overview', lbv('forms'));
-        Route::view('control', lbv('forms'));
+        Route::view('overview', lbv('forms.overview'));
+        Route::view('form-control', lbv('forms.form-control'));
         Route::view('select', lbv('forms'));
         Route::view('check-radio', lbv('forms'));
         Route::view('range', lbv('forms'));
